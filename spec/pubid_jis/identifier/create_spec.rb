@@ -40,6 +40,14 @@ module Pubid::Jis
           expect(subject.to_s).to eq("JIS #{number}(E)")
         end
       end
+
+      context "all parts" do
+        let(:params) { { all_parts: true } }
+
+        it "renders identifier with all-parts" do
+          expect(subject.to_s).to eq("JIS #{number}(規格群)")
+        end
+      end
     end
   end
 end

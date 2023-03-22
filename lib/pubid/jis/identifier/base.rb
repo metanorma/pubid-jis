@@ -3,7 +3,7 @@ require 'forwardable'
 module Pubid::Jis
   module Identifier
     class Base < Pubid::Core::Identifier::Base
-      attr_accessor :series
+      attr_accessor :series, :all_parts
       extend Forwardable
 
       def self.type
@@ -12,10 +12,24 @@ module Pubid::Jis
 
       # @param month [Integer] document's month
       # @param edition [String] document's edition version, e.g. "3.0", "1.0"
-      def initialize(publisher: "JIS", series: nil, part: nil, **opts)
+      def initialize(publisher: "JIS", series: nil, part: nil, all_parts: false, **opts)
         super(**opts.merge(publisher: publisher))
         @series = series if series
         @part = part if part
+        @all_parts = all_parts
+      end
+
+      def all_parts?
+        all_parts
+      end
+
+      def ==(other)
+        if all_parts? || other.all_parts?
+          return get_params.reject { |k, _| [:part, :all_parts].include?(k) } ==
+            other.get_params.reject { |k, _| [:part, :all_parts].include?(k) }
+        end
+
+        super
       end
 
       class << self
