@@ -3,7 +3,7 @@ module Pubid::Jis::Renderer
     TYPE = "".freeze
 
     def render_identifier(params)
-      "%{publisher}%{series} %{number}%{part}%{year}" % params
+      "%{publisher}%{series} %{number}%{part}%{year}%{all_parts}" % params
     end
 
     def render_series(series, _opts, _params)
@@ -14,6 +14,10 @@ module Pubid::Jis::Renderer
       return "-#{part.reverse.join('-')}" if part.is_a?(Array)
 
       "-#{part}"
+    end
+
+    def render_all_parts(all_parts, _opts, _params)
+      "(規格群)" if all_parts
     end
   end
 end

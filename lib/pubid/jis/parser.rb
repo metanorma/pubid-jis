@@ -20,12 +20,17 @@ module Pubid::Jis
       (dash >> digits.as(:part)).repeat
     end
 
+    rule(:all_parts) do
+      (str("(規格群)") | str("（規格群）")).as(:all_parts)
+    end
+
     rule(:language) do
       str("(") >> match("[A-Z]").as(:language) >> str(")")
     end
 
     rule(:identifier) do
-      str("JIS") >> space >> series >> space >> digits.as(:number) >> part >> (colon >> year).maybe >> language.maybe
+      str("JIS") >> space >> series >> space >> digits.as(:number) >> part >>
+        (colon >> year).maybe >> language.maybe >> all_parts.maybe
     end
 
     rule(:root) { identifier }

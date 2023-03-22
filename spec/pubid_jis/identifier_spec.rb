@@ -33,6 +33,39 @@ module Pubid::Jis
       it_behaves_like "converts pubid to pubid"
     end
 
+    context "JIS C 0617(規格群)" do
+      let(:pubid) { "JIS C 0617(規格群)" }
+
+      it_behaves_like "converts pubid to pubid"
+
+      it "has all-parts attribute" do
+        expect(subject.all_parts?).to be_truthy
+      end
+
+      context "when compare with identifier with part" do
+        let(:another_pubid) { "JIS C 0617-2" }
+
+        it "returns true" do
+          expect(subject == described_class.parse(another_pubid)).to be_truthy
+        end
+      end
+
+      context "when compare with another identifier" do
+        let(:another_pubid) { "JIS C 0618-1" }
+
+        it "returns false" do
+          expect(subject == described_class.parse(another_pubid)).to be_falsey
+        end
+      end
+    end
+
+    context "JIS B 0060（規格群）" do
+      let(:original) { "JIS B 0060（規格群）" }
+      let(:pubid) { "JIS B 0060(規格群)" }
+
+      it_behaves_like "converts pubid to pubid"
+    end
+
     context "japanese characters" do
       context "dash" do
         let(:original) { "JIS C 61000ｰ3ｰ2" }
