@@ -1,0 +1,26 @@
+= JIS publication identifiers ("JIS PubID")
+
+== Purpose
+
+This gem implements a mechanism to parse and utilize JIS publication
+identifiers.
+
+== Use cases to support
+
+. generate updated PubID
+
+== Usage
+
+=== Identifier creation
+
+Basic usage of the pubid-jis gem starts with the `Identifier#create` method.
+
+[source,ruby]
+----
+require "pubid-jis"
+
+pubid = Pubid::Jis::Identifier.create(number: 1234, series: "A", part: 1, year: 1999, language: "E")
+pubid.to_s
+
+=> "JIS A 1234-1:1999(E)"
+----

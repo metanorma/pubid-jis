@@ -1,0 +1,83 @@
+PATH
+  remote: .
+  specs:
+    pubid-jis (0.1.1)
+      lightly
+      nokogiri
+      parslet
+      pubid-core (~> 1.7.0)
+      thor
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    ast (2.4.2)
+    diff-lcs (1.5.0)
+    json (2.6.3)
+    lightly (0.3.3)
+    nokogiri (1.14.2-x86_64-darwin)
+      racc (~> 1.4)
+    parallel (1.22.1)
+    parser (3.2.1.1)
+      ast (~> 2.4.1)
+    parslet (2.0.0)
+    pubid-core (1.7.0)
+      parslet
+    racc (1.6.2)
+    rainbow (3.1.1)
+    rake (13.0.6)
+    regexp_parser (2.7.0)
+    rexml (3.2.5)
+    rspec (3.12.0)
+      rspec-core (~> 3.12.0)
+      rspec-expectations (~> 3.12.0)
+      rspec-mocks (~> 3.12.0)
+    rspec-core (3.12.1)
+      rspec-support (~> 3.12.0)
+    rspec-expectations (3.12.2)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-mocks (3.12.4)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-support (3.12.0)
+    rubocop (1.48.1)
+      json (~> 2.3)
+      parallel (~> 1.10)
+      parser (>= 3.2.0.0)
+      rainbow (>= 2.2.2, < 4.0)
+      regexp_parser (>= 1.8, < 3.0)
+      rexml (>= 3.2.5, < 4.0)
+      rubocop-ast (>= 1.26.0, < 2.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (>= 2.4.0, < 3.0)
+    rubocop-ast (1.27.0)
+      parser (>= 3.2.1.0)
+    rubocop-capybara (2.17.1)
+      rubocop (~> 1.41)
+    rubocop-performance (1.16.0)
+      rubocop (>= 1.7.0, < 2.0)
+      rubocop-ast (>= 0.4.0)
+    rubocop-rake (0.6.0)
+      rubocop (~> 1.0)
+    rubocop-rspec (2.19.0)
+      rubocop (~> 1.33)
+      rubocop-capybara (~> 2.17)
+    ruby-progressbar (1.13.0)
+    thor (1.2.1)
+    unicode-display_width (2.4.2)
+
+PLATFORMS
+  x86_64-darwin-19
+  x86_64-darwin-20
+
+DEPENDENCIES
+  pubid-jis!
+  rake (~> 13.0)
+  rspec (~> 3.0)
+  rubocop-performance
+  rubocop-rake
+  rubocop-rspec
+
+BUNDLED WITH
+   2.2.32
