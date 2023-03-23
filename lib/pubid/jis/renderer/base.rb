@@ -17,7 +17,7 @@ module Pubid::Jis::Renderer
     end
 
     def render_all_parts(all_parts, _opts, _params)
-      "(規格群)" if all_parts
+      "（規格群）" if all_parts
     end
   end
 end

@@ -34,7 +34,7 @@ module Pubid::Jis
     end
 
     context "JIS C 0617(規格群)" do
-      let(:pubid) { "JIS C 0617(規格群)" }
+      let(:pubid) { "JIS C 0617（規格群）" }
 
       it_behaves_like "converts pubid to pubid"
 
@@ -60,8 +60,7 @@ module Pubid::Jis
     end
 
     context "JIS B 0060（規格群）" do
-      let(:original) { "JIS B 0060（規格群）" }
-      let(:pubid) { "JIS B 0060(規格群)" }
+      let(:pubid) { "JIS B 0060（規格群）" }
 
       it_behaves_like "converts pubid to pubid"
     end
