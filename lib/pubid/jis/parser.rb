@@ -29,7 +29,7 @@ module Pubid::Jis
     end
 
     rule(:identifier) do
-      str("JIS") >> space >> series >> space >> digits.as(:number) >> part >>
+      str("JIS") >> space? >> series >> space? >> digits.as(:number) >> part >>
         (colon >> year).maybe >> language.maybe >> all_parts.maybe
     end
 
