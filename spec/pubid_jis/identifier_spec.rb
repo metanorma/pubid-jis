@@ -65,6 +65,20 @@ module Pubid::Jis
       it_behaves_like "converts pubid to pubid"
     end
 
+    context "JISX0902-1:2019" do
+      let(:original) { "JISX0902-1:2019" }
+      let(:pubid) { "JIS X 0902-1:2019" }
+
+      it_behaves_like "converts pubid to pubid"
+    end
+
+    context "JISX0836:2005" do
+      let(:original) { "JISX0836:2005" }
+      let(:pubid) { "JIS X 0836:2005" }
+
+      it_behaves_like "converts pubid to pubid"
+    end
+
     context "japanese characters" do
       context "dash" do
         let(:original) { "JIS C 61000ｰ3ｰ2" }
