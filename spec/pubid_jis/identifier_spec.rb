@@ -81,6 +81,18 @@ module Pubid::Jis
       end
     end
 
+    context "JIS TR Z 8301:2019" do
+      let(:pubid) { "JIS TR Z 8301:2019" }
+
+      it_behaves_like "converts pubid to pubid"
+    end
+
+    context "JIS TS Z 8301:2019" do
+      let(:pubid) { "JIS TS Z 8301:2019" }
+
+      it_behaves_like "converts pubid to pubid"
+    end
+
     context "japanese characters" do
       context "dash" do
         let(:original) { "JIS C 61000ｰ3ｰ2" }
