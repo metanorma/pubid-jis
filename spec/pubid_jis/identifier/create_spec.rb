@@ -48,6 +48,22 @@ module Pubid::Jis
           expect(subject.to_s).to eq("JIS #{number}（規格群）")
         end
       end
+
+      context "technical report" do
+        let(:params) { { type: :tr } }
+
+        it "renders technical report identifier" do
+          expect(subject.to_s).to eq("JIS TR #{number}")
+        end
+      end
+
+      context "technical specification" do
+        let(:params) { { type: :ts } }
+
+        it "renders technical specification identifier" do
+          expect(subject.to_s).to eq("JIS TS #{number}")
+        end
+      end
     end
   end
 end
