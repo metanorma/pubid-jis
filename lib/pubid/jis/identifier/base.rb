@@ -33,11 +33,29 @@ module Pubid::Jis
       end
 
       class << self
+        def transform_supplements(supplements_params, base_params)
+          supplements = supplements_params.map do |supplement|
+            Identifier.create(number: supplement[:number], year: supplement[:year],
+                              type: supplement[:type], base: Identifier.create(**base_params))
+          end
+
+          return supplements.first if supplements.count == 1
+
+          raise Errors::SupplementParsingError, "more than one or none supplements provided"
+        end
+
         # Use Identifier#create to resolve identifier's type class
         def transform(params)
           identifier_params = params.map do |k, v|
             get_transformer_class.new.apply(k => v)
           end.inject({}, :merge)
+
+          if identifier_params[:supplements]
+            return transform_supplements(
+              identifier_params[:supplements],
+              identifier_params.dup.tap { |h| h.delete(:supplements) }
+            )
+          end
 
           Identifier.create(**identifier_params)
         end
