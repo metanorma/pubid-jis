@@ -64,6 +64,14 @@ module Pubid::Jis
           expect(subject.to_s).to eq("JIS TS #{number}")
         end
       end
+
+      context "amendment" do
+        let(:params) { { type: :amd, base: described_class.create(number: number), number: 1, year: 1999 } }
+
+        it "renders amendment to base identifier" do
+          expect(subject.to_s).to eq("JIS #{number}/AMD 1:1999")
+        end
+      end
     end
   end
 end

@@ -33,9 +33,13 @@ module Pubid::Jis
       str("(") >> match("[A-Z]").as(:language) >> str(")")
     end
 
+    rule(:amendment) do
+      (str("/") >> str("AMD").as(:type) >> space >> digits.as(:number) >> colon >> year).repeat(1).as(:supplements)
+    end
+
     rule(:identifier) do
       str("JIS") >> space? >> type.maybe >> space? >> series >> space? >> digits.as(:number) >> part >>
-        (colon >> year).maybe >> language.maybe >> all_parts.maybe
+        (colon >> year).maybe >> language.maybe >> all_parts.maybe >> amendment.maybe
     end
 
     rule(:root) { identifier }

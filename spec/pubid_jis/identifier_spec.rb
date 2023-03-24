@@ -93,6 +93,12 @@ module Pubid::Jis
       it_behaves_like "converts pubid to pubid"
     end
 
+    context "JIS A 0001:1999/AMD 1:2000" do
+      let(:pubid) { "JIS A 0001:1999/AMD 1:2000" }
+
+      it_behaves_like "converts pubid to pubid"
+    end
+
     context "japanese characters" do
       context "dash" do
         let(:original) { "JIS C 61000ｰ3ｰ2" }
