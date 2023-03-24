@@ -99,6 +99,27 @@ module Pubid::Jis
       it_behaves_like "converts pubid to pubid"
     end
 
+    context "JIS/TR X 0005:1998" do
+      let(:original) { "JIS/TR X 0005:1998" }
+      let(:pubid) { "JIS TR X 0005:1998" }
+
+      it_behaves_like "converts pubid to pubid"
+    end
+
+    context "TR B 0035:2019" do
+      let(:original) { "TR B 0035:2019" }
+      let(:pubid) { "JIS TR B 0035:2019" }
+
+      it_behaves_like "converts pubid to pubid"
+    end
+
+    context "TS Z0030-1:2017" do
+      let(:original) { "TS Z0030-1:2017" }
+      let(:pubid) { "JIS TS Z 0030-1:2017" }
+
+      it_behaves_like "converts pubid to pubid"
+    end
+
     context "japanese characters" do
       context "dash" do
         let(:original) { "JIS C 61000ｰ3ｰ2" }

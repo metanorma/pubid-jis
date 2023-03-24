@@ -2,7 +2,8 @@ module Pubid::Jis
   class Parser < Pubid::Core::Parser
 
     rule(:type) do
-      array_to_str(Identifier.config.types.map { |type| type.type[:short] }.compact).as(:type)
+      str("/").maybe >>
+        array_to_str(Identifier.config.types.map { |type| type.type[:short] }.compact).as(:type)
     end
 
     rule(:space) do
@@ -38,7 +39,7 @@ module Pubid::Jis
     end
 
     rule(:identifier) do
-      str("JIS") >> space? >> type.maybe >> space? >> series >> space? >> digits.as(:number) >> part >>
+      str("JIS").maybe >> space? >> type.maybe >> space? >> series >> space? >> digits.as(:number) >> part >>
         (colon >> year).maybe >> language.maybe >> all_parts.maybe >> amendment.maybe
     end
 
