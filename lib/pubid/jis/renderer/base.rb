@@ -6,8 +6,12 @@ module Pubid::Jis::Renderer
       "%{publisher}%{series} %{number}%{part}%{year}%{all_parts}" % params
     end
 
-    def render_series(series, _opts, _params)
-      " #{series}"
+    def render_publisher(publisher, opts, params)
+      super if opts[:with_publisher]
+    end
+
+    def render_series(series, opts, _params)
+      opts[:with_publisher] ? " #{series}" : series
     end
 
     def render_part(part, opts, _params)

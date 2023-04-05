@@ -32,6 +32,14 @@ module Pubid::Jis
         super
       end
 
+      # @param with_publisher [Boolean] add publisher to output
+      def to_s(with_publisher: true)
+        options = {}
+        options[:with_publisher] = with_publisher
+
+        self.class.get_renderer_class.new(get_params).render(**options)
+      end
+
       class << self
         def transform_supplements(supplements_params, base_params)
           supplements = supplements_params.map do |supplement|
