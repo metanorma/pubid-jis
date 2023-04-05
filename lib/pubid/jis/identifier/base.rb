@@ -25,8 +25,8 @@ module Pubid::Jis
 
       def ==(other)
         if all_parts? || other.all_parts?
-          return get_params.reject { |k, _| [:part, :all_parts].include?(k) } ==
-            other.get_params.reject { |k, _| [:part, :all_parts].include?(k) }
+          return get_params.reject { |k, _| [:year, :part, :all_parts].include?(k) } ==
+            other.get_params.reject { |k, _| [:year, :part, :all_parts].include?(k) }
         end
 
         super
