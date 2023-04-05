@@ -52,6 +52,14 @@ module Pubid::Jis
         end
       end
 
+      context "when compare with identifier with another year" do
+        let(:another_pubid) { "JIS C 0617-2:2017" }
+
+        it "returns true" do
+          expect(subject == described_class.parse(another_pubid)).to be_truthy
+        end
+      end
+
       context "when compare with another identifier" do
         let(:another_pubid) { "JIS C 0618-1" }
 
