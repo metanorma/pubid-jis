@@ -5,8 +5,10 @@ module Pubid::Jis
 
     context "JIS B 0001" do
       let(:pubid) { "JIS B 0001" }
+      let(:pubid_without_publisher) { "B 0001" }
 
       it_behaves_like "converts pubid to pubid"
+      it_behaves_like "converts pubid to pubid without publisher"
     end
 
     context "JIS C 61000-3-2" do
