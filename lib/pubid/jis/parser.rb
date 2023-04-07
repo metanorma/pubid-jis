@@ -35,7 +35,7 @@ module Pubid::Jis
     end
 
     rule(:amendment) do
-      (str("/") >> str("AMD").as(:type) >> space >> digits.as(:number) >> colon >> year).repeat(1).as(:supplements)
+      (str("/") >> (str("AMD") | str("AMENDMENT")).as(:type) >> space >> digits.as(:number) >> colon >> year).repeat(1).as(:supplements)
     end
 
     rule(:identifier) do
