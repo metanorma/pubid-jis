@@ -72,6 +72,14 @@ module Pubid::Jis
           expect(subject.to_s).to eq("JIS #{number}/AMD 1:1999")
         end
       end
+
+      context "explanation" do
+        let(:params) { { type: :explanation, base: described_class.create(number: number), number: 1 } }
+
+        it "renders explanation to base identifier" do
+          expect(subject.to_s).to eq("JIS #{number}/EXPL 1")
+        end
+      end
     end
   end
 end
