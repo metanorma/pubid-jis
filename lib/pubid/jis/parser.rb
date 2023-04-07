@@ -38,9 +38,13 @@ module Pubid::Jis
       (str("/") >> str("AMD").as(:type) >> space >> digits.as(:number) >> colon >> year).repeat(1).as(:supplements)
     end
 
+    rule(:explanation) do
+      (str("/") >> (str("EXPLANATION") | str("EXPL")) >> (space >> digits.as(:number)).maybe).as(:explanation)
+    end
+
     rule(:identifier) do
       str("JIS").maybe >> space? >> type.maybe >> space? >> series >> space? >> digits.as(:number) >> part >>
-        (colon >> year).maybe >> language.maybe >> all_parts.maybe >> amendment.maybe
+        (colon >> year).maybe >> language.maybe >> all_parts.maybe >> amendment.maybe >> explanation.maybe
     end
 
     rule(:root) { identifier }

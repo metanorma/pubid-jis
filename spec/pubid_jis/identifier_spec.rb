@@ -153,6 +153,21 @@ module Pubid::Jis
       end
     end
 
+    context "explanation" do
+      context "JIS K 2151:2004/EXPL" do
+        let(:pubid) { "JIS K 2151:2004/EXPL" }
+
+        it_behaves_like "converts pubid to pubid"
+      end
+
+      context "JIS K 2249-4:2011/EXPLANATION 4" do
+        let(:original) { "JIS K 2249-4:2011/EXPLANATION 4" }
+        let(:pubid) { "JIS K 2249-4:2011/EXPL 4" }
+
+        it_behaves_like "converts pubid to pubid"
+      end
+    end
+
     describe "parse identifiers from examples files" do
       shared_examples "parse identifiers from file" do
         it "parse identifiers from file" do

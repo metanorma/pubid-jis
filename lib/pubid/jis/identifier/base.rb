@@ -52,6 +52,10 @@ module Pubid::Jis
           raise Errors::SupplementParsingError, "more than one or none supplements provided"
         end
 
+        def transform_explanation(params, base_params)
+          Identifier.create(type: :explanation, base: Identifier.create(**base_params), **params)
+        end
+
         # Use Identifier#create to resolve identifier's type class
         def transform(params)
           identifier_params = params.map do |k, v|
@@ -62,6 +66,13 @@ module Pubid::Jis
             return transform_supplements(
               identifier_params[:supplements],
               identifier_params.dup.tap { |h| h.delete(:supplements) }
+            )
+          end
+
+          if identifier_params[:explanation]
+            return transform_explanation(
+              identifier_params[:explanation].is_a?(Hash) ? identifier_params[:explanation] : {},
+              identifier_params.dup.tap { |h| h.delete(:explanation) }
             )
           end
 
