@@ -2,6 +2,10 @@ module Pubid::Jis::Renderer
   class Base < Pubid::Core::Renderer::Base
     TYPE = "".freeze
 
+    def render(**args)
+      render_base_identifier(**args) + @prerendered_params[:language].to_s
+    end
+
     def render_identifier(params)
       "%{publisher}%{series} %{number}%{part}%{year}%{all_parts}" % params
     end
@@ -22,6 +26,10 @@ module Pubid::Jis::Renderer
 
     def render_all_parts(all_parts, _opts, _params)
       "（規格群）" if all_parts
+    end
+
+    def render_year(year, _opts, _params)
+      ":#{year}"
     end
   end
 end
