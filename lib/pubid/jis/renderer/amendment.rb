@@ -5,5 +5,9 @@ module Pubid::Jis::Renderer
     def render_identifier(params)
       "%{base}/AMD %{number}%{year}" % params
     end
+
+    def render_base(base, opts, _params)
+      base.to_s(**opts)
+    end
   end
 end

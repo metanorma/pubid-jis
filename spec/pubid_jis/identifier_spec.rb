@@ -106,8 +106,10 @@ module Pubid::Jis
     context "amendments" do
       context "JIS A 0001:1999/AMD 1:2000" do
         let(:pubid) { "JIS A 0001:1999/AMD 1:2000" }
+        let(:pubid_without_publisher) { "A 0001:1999/AMD 1:2000" }
 
         it_behaves_like "converts pubid to pubid"
+        it_behaves_like "converts pubid to pubid without publisher"
       end
 
       context "JIS X 0208:1997/AMENDMENT 1:2012" do
