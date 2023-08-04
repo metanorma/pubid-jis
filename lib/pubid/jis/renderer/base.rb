@@ -19,7 +19,7 @@ module Pubid::Jis::Renderer
     end
 
     def render_part(part, opts, _params)
-      return "-#{part.reverse.join('-')}" if part.is_a?(Array)
+      return "-#{part.join('-')}" if part.is_a?(Array)
 
       "-#{part}"
     end
