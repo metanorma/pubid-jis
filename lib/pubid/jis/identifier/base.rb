@@ -25,8 +25,8 @@ module Pubid::Jis
 
       def ==(other)
         if all_parts? || other.all_parts?
-          return get_params.reject { |k, _| [:year, :part, :all_parts].include?(k) } ==
-            other.get_params.reject { |k, _| [:year, :part, :all_parts].include?(k) }
+          return to_h.reject { |k, _| [:year, :part, :all_parts].include?(k) } ==
+            other.to_h.reject { |k, _| [:year, :part, :all_parts].include?(k) }
         end
 
         super
@@ -37,7 +37,7 @@ module Pubid::Jis
         options = {}
         options[:with_publisher] = with_publisher
 
-        self.class.get_renderer_class.new(get_params).render(**options)
+        self.class.get_renderer_class.new(to_h(deep: false)).render(**options)
       end
 
       class << self
